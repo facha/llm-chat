@@ -7,8 +7,8 @@ llm-chat is a Python-based interactive command-line utility that communicates wi
 
 ## Features
 - Interactive chat with LLMs via OpenAI-compatible API
-- Primary focus has been on using with a locally-hosted model
-- Starts llama-server in background if invoked via `llm` shell script
+  - Primary focus has been on using with a locally-hosted model
+  - Starts llama-server in background if invoked via `llm` shell script
 - Streaming responses for a smooth user experience
 - Graceful handling of user interruptions (Ctrl+C)
 - View raw conversation history
@@ -16,16 +16,17 @@ llm-chat is a Python-based interactive command-line utility that communicates wi
 
 ## Installation & Setup
 ### Prerequisites
-Ensure you have Python installed on your system. You also need the following dependencies:
-
-- `openai`
-- `python-dotenv`
+Ensure you have Python installed on your system. 
+If you want to use this script with a local server, you'd need to install it separately
+   ```sh
+   brew install llama.cpp
+   ```
 
 ### Installation
 1. Clone this repository or copy the script into a directory:
    ```sh
-   git clone <repository-url>
-   cd <repository>
+   git clone https://github.com/facha/llm-chat.git
+   cd llm-chat
    ```
 2. Install the required dependencies:
    ```sh
@@ -46,7 +47,7 @@ llm
 ```
 The script will launch llama-server in background and then will launch the chat client.
 
-Alternatively launch llm.py directly, if you have an OpenAI compatible endpoint available (e.g. llama-server is already running):
+Alternatively launch llm.py directly, if you have an OpenAI compatible endpoint available (e.g. llama-server is already running on your machine):
 ```sh
 source .venv/bin/activate
 python llm.py
