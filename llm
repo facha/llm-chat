@@ -1,0 +1,19 @@
+#!/bin/bash
+
+LLM_MODEL="bartowski/Mistral-Small-24B-Instruct-2501-GGUF:Q8_0"
+OPENAI_API_KEY="dummy-key"
+OPENAI_BASE_URL="http://localhost:8080/v1"
+
+cd "$(dirname "$0")"
+if [ -f .env ]; then
+    source .env
+fi
+
+if [[ "$1" != "--no-server" ]] && ! pgrep -x "llama-server" > /dev/null; then
+    echo "Starting llama server in background..."
+    trap 'kill $(jobs -p)' EXIT
+    llama-server -fa -hf ${LLM_MODEL} --log-file llm.log 1>/dev/null 2>&1 &
+fi
+
+source .venv/bin/activate
+python llm.py

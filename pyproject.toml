@@ -1,0 +1,10 @@
+[project]
+name = "llm-chat"
+version = "0.1.0"
+description = "Console client for interacting with LLMs via OpenAI-compatible API endpoint"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.61.1",
+    "python-dotenv>=1.0.1",
+]
